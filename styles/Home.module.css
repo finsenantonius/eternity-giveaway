@@ -1,15 +1,90 @@
-.container {
-  padding: 0 2rem;
+.header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(to right, #422574, #7f389e);
+}
+
+.logo {
+  width: 18%;
+  display: inline-block;
+}
+
+.headerWrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem 0 1rem;
+  max-width: 1280px;
 }
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+  width: 100%;
+  background-image: linear-gradient(to right, #422574, #7f389e);
+  margin: 0 auto;
+  padding: 0 0;
+}
+
+.mainWrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem 2rem 1rem;
+  max-width: 1280px;
+}
+
+.mainContent {
+  display: flex;
+}
+
+.mainTitle {
+  font-family: 'Serca';
+  font-size: 42px;
+  font-weight: 700;
+  color: #fdf7f2;
+  margin: 0;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.TitleSpan {
+  font-family: 'Serca';
+  font-size: 74px;
+  font-weight: 700;
+  color: #fedc17;
+  margin: 0;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.mainLeft {
+  align-self: center;
+  width: 50%;
+}
+
+.mainRight {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.banner {
+  width: 120%;
+}
+
+.prize {
+  width: 60%;
+}
+
+.bannerDescription {
+  font-family: 'Serca';
+  font-weight: 500;
+  text-align: center;
+  color: #FDF7F2;
+  margin: 0px;
+  margin-bottom: 12px;
+  margin-top: -20px;
+  line-height: 1.5;
 }
 
 .footer {
