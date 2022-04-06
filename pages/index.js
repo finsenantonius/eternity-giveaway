@@ -105,7 +105,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.formSection}>
+        {/* <div className={styles.formSection}>
           <div className={styles.formSectionWrapper}>
             <div className={styles.formContent}>
               <div className={styles.formImageContainer}>
@@ -155,7 +155,7 @@ export default function Home() {
 
             </div>
           </div>
-        </div>
+        </div> */}
 
       </div>
 
