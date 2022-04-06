@@ -1,0 +1,24 @@
+.container {
+  width: 100%;
+  text-align: start;
+}
+
+.label {
+  font-family: 'Serca';
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0;
+  margin-bottom: 6px;
+  text-align: start;
+}
+
+.input {
+  height: 30px;
+  width: 100%;
+  padding: 12px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}

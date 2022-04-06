@@ -1,10 +1,70 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import styles from '../styles/Home.module.css'
 import Layout from '../components/layout'
 
+const FormInput = dynamic(
+  () => import('../components/FormInput'),
+  { ssr: false }
+)
+
 export default function Home() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [accountNumber, setAccountNumber] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handlePost = async (e) => {
+    e.preventDefault();
+
+    // reset error and message
+    setError('');
+    setMessage('');
+
+    // fields check
+    if (!name || !email || !phoneNumber || !accountNumber) return setError('All fields are required');
+
+    setLoading(true);
+    // post structure
+    let user = {
+        name,
+        email,
+        phoneNumber,
+        accountNumber,
+        createdAt: new Date().toString(),
+    };
+    // save the post
+    let response = await fetch('/api/register', {
+        method: 'POST',
+        body: JSON.stringify(user),
+    });
+
+    // get the data
+    let data = await response.json();
+
+    if (data.success) {
+        // reset the fields
+        setName('');
+        setEmail('')
+        setPhoneNumber('')
+        setAccountNumber('')
+        setLoading(false);
+
+        // set the message
+        return setMessage('Success Input Data');
+    } else {
+        // set the error
+        setLoading(false);
+        return setError('Error, please try again');
+    }
+  };
+
   return (
     <Layout>
       <Head>
@@ -44,6 +104,59 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        <div className={styles.formSection}>
+          <div className={styles.formSectionWrapper}>
+            <div className={styles.formContent}>
+              <div className={styles.formImageContainer}>
+                <div className={styles.woman}>
+                  <Image priority src="/images/mbak.webp" alt='Woman Icon' width={1344} height={1504} layout='responsive' />
+                </div>
+              </div>
+              
+
+              <div className={styles.formContainer}>
+                <form onSubmit={handlePost}>
+                  <div className={styles.form}>
+                    <FormInput 
+                      label="Name" 
+                      placeholder="Your Name" 
+                      type="text" 
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <FormInput 
+                      label="Email" 
+                      placeholder="Your Email" 
+                      type="text"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className={styles.form}>
+                    <FormInput 
+                      label="Phone Number" 
+                      placeholder="Your Phone Number" 
+                      type="text"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                    <FormInput 
+                      label="Account Number"
+                      placeholder="Your Account Number" 
+                      type="text" 
+                      value={accountNumber}
+                      onChange={(e) => setAccountNumber(e.target.value)}
+                    />
+                  </div>
+                  <button className={styles.registerButton}>Get Ticket</button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
 
         
