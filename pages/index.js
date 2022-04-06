@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css'
 import Layout from '../components/layout'
 
 const FormInput = dynamic(
-  () => import('../components/FormInput'),
+  () => import('../components/formInput'),
   { ssr: false }
 )
 
